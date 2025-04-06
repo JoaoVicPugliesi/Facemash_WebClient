@@ -1,0 +1,9 @@
+.duel {
+    width: 100%;
+    padding: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+    font-family: verdana;
+}
