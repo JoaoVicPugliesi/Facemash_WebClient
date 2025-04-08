@@ -1,9 +1,9 @@
-import { baseURL } from "../../application/baseUrl";
+import { baseURL } from "../../domain/providers/IBaseUrl";
 import { IHttpClientOptions, IHttpClientResponse } from "../../domain/entities/HttpClient";
 import { IHttpClientProviderRepo } from "../../domain/providers/IHttpClientProviderRepo";
 
 export class IFetchApiHttpClientProviderRepoImpl implements IHttpClientProviderRepo {
-    async post(url: string, options?: IHttpClientOptions): Promise<IHttpClientResponse> {
+    async provide(url: string, options?: IHttpClientOptions): Promise<IHttpClientResponse> {
         const response = await fetch(`${baseURL}${url}`, {
             method: options?.method,
             headers: options?.headers,

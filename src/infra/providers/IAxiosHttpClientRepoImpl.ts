@@ -3,7 +3,7 @@ import { IHttpClientProviderRepo } from "../../domain/providers/IHttpClientProvi
 import { iAxios } from "../../domain/services/axios";
 
 export class IAxiosHttpClientProviderRepoImpl implements IHttpClientProviderRepo {
-    async post(url: string, options?: IHttpClientOptions): Promise<IHttpClientResponse> {
+    async provide(url: string, options?: IHttpClientOptions): Promise<IHttpClientResponse> {
         const response = await iAxios.post(url, options?.body, {
             method: options?.method,
             headers: options?.headers,

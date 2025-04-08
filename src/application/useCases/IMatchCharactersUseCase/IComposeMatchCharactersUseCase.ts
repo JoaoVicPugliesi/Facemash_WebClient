@@ -2,10 +2,9 @@ import { IMatchCharactersUseCaseRepoImpl } from "../../../infra/repositories/IMa
 import { IHttpClientFactory } from "../../factories/IHttpClientFactory";
 import { IMatchCharactersUseCase } from "./IMatchCharactersUseCase";
 
-export async function iMatchCharactersCompose() {
+export async function iComposeMatchCharactersUseCase() {
     const iMatchCharactersUseCaseRepo = new IMatchCharactersUseCaseRepoImpl();
     const iHttpClientFactory = new IHttpClientFactory();
     const iHttpClientRepo = iHttpClientFactory.compose();
-    const iMatchCharactersUseCase = new IMatchCharactersUseCase(iMatchCharactersUseCaseRepo, iHttpClientRepo);
-    return iMatchCharactersUseCase.execute();
+    return new IMatchCharactersUseCase(iMatchCharactersUseCaseRepo, iHttpClientRepo);
 }

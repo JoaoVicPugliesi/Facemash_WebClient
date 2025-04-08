@@ -1,12 +1,13 @@
 import { IHttpClientProviderRepo } from "../../domain/providers/IHttpClientProviderRepo";
-import { IAxiosHttpClientProviderRepoImpl } from "../../infra/providers/IAxiosHttpClientRepoImpl";
+// import { IAxiosHttpClientProviderRepoImpl } from "../../infra/providers/IAxiosHttpClientRepoImpl";
+import { IFetchApiHttpClientProviderRepoImpl } from "../../infra/providers/IFetchApiHttpClientRepoImpl";
 import { IHttpClientDecorator } from "../decorators/IHttpClientDecorator";
 
 export class IHttpClientFactory {
     compose(): IHttpClientProviderRepo {
-        // const iFecthApiHttpClientProviderRepoImpl = new IFetchApiHttpClientProviderRepoImpl();
-        const iAxiosHttpClientProviderRepo = new IAxiosHttpClientProviderRepoImpl();
-        const iHttpClientDecorator = new IHttpClientDecorator(iAxiosHttpClientProviderRepo);
+        const iHttpClientProviderRepo = new IFetchApiHttpClientProviderRepoImpl();
+        // const iHttpClientProviderRepo = new IAxiosHttpClientProviderRepoImpl();
+        const iHttpClientDecorator = new IHttpClientDecorator(iHttpClientProviderRepo);
         return iHttpClientDecorator;
     }
 }

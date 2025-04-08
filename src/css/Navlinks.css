@@ -1,0 +1,11 @@
+.navlinks {
+    background-color: rgb(150, 20, 20);
+    width: max-content;
+    padding: 5px 15px;
+    margin: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    border-radius: 5px;
+}

@@ -1,3 +1,4 @@
+import { IGender } from "../../../domain/entities/Character";
 import { IHttpClientProviderRepo } from "../../../domain/providers/IHttpClientProviderRepo";
 import { IMatchCharactersUseCaseRepo } from "../../../domain/repositories/IMatchCharactersUseCaseRepo";
 import { IMatchCharactersUseCaseDTO, IMatchCharactersUseCaseResponseDTO } from "./IMatchCharactersUseCaseDTO";
@@ -8,14 +9,13 @@ export class IMatchCharactersUseCase {
         private readonly iHttpClientProviderRepo: IHttpClientProviderRepo
     ) {}
 
-    async execute() {
+    async execute(gender: IGender) {
 
-        const randomIds: IMatchCharactersUseCaseDTO = this.iMatchCharactersUseCaseRepo.assignRandomIds();
-
-        const response = await this.iHttpClientProviderRepo.post('/characters/match', {
+        const randomIds: IMatchCharactersUseCaseDTO = this.iMatchCharactersUseCaseRepo.assignRandomIds(gender);
+        const response = await this.iHttpClientProviderRepo.provide('/characters/match', {
             method: 'POST',
             headers: {
-                'content-type': 'application/json',
+                'Content-Type': 'application/json',
             },
             body: JSON.stringify(randomIds)
         });

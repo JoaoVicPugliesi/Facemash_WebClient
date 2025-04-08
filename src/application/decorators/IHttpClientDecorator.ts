@@ -4,7 +4,8 @@ import { IHttpClientProviderRepo } from "../../domain/providers/IHttpClientProvi
 export class IHttpClientDecorator implements IHttpClientProviderRepo {
     constructor(private readonly decoratee: IHttpClientProviderRepo) {}
 
-    async post(url: string, options?: IHttpClientOptions): Promise<IHttpClientResponse> {
-        return await this.decoratee.post(url, options);
+    async provide(url: string, options?: IHttpClientOptions): Promise<IHttpClientResponse> {
+        const response: IHttpClientResponse = await this.decoratee.provide(url, options);
+        return response;
     }
 }
